@@ -48,7 +48,7 @@ const Level = ({ data }) => {
   };
 
   return (
-    <div className={`w-full bg-black relative pt-5 relative ${openQuiz ? "h-[205vh]" : "h-[130vh]"}  sm:h-screen sm:overflow-hidden`}>
+    <div className={`w-full bg-black relative pt-5 relative ${openQuiz ? "h-[205vh] sm:h-[140vh]" : "h-[130vh] sm:h-screen sm:overflow-hidden"}`}>
       <img id="bg" src="/gamebg.jpeg" alt="levels bg" className="absolute top-0 z-0 opacity-25 object-cover" />
       <div className="m-10 mt-20 p-5 border border-gray-300/40 rounded-lg bg-white/30 shadow-md transition-all duration-500 min-h-96 text-white absolute">
         <h2 className="text-2xl font-bold mb-4">Level {level}</h2>
