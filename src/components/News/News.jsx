@@ -25,7 +25,7 @@ export const Loader = () => {
 };
 
 const News = () => {
-    const [news, setNews] = useState([]);
+    const [news, setNews] = useState([{title: "news1", url: "url1"}]);
     const [loading, setLoading] = useState(true);
 
     const api = async () => {
