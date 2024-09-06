@@ -25,7 +25,7 @@ export const Loader = () => {
 };
 
 const News = () => {
-    const [news, setNews] = useState([]);  // Initialize as an empty array
+    const [news, setNews] = useState([]); 
     const [loading, setLoading] = useState(true);
 
     const api = async () => {
