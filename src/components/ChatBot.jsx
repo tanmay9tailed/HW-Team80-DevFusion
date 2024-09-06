@@ -27,7 +27,7 @@ function ChatBot() {
             {isBotVisible && (
                 <div className={`bot ${isFadingOut ? 'fade-out' : 'fade-in'}`}>
                     <iframe
-                        src="https://www.chatbase.co/chatbot-iframe/vdiMDhkvQYJTi89HoA80R"
+                        src="https://www.chatbase.co/chatbot-iframe/HWbgXpkzUz5j8LhV9ci6-"
                         width="100%"
                         style={{ height: "100%", minHeight: "500px" }}
                         frameBorder="0"
