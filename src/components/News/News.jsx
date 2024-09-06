@@ -30,9 +30,9 @@ const News = () => {
 
     const api = async () => {
         try {
-            const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=498950393eba4c75b1ae2a427279dae5');
+            const response = await fetch('https://newsdata.io/api/1/news?apikey=pub_528086f0f764b3a1c629334f61f2da48ef5f6&q=india&country=in&language=en&category=domestic,politics ');
             const result = await response.json();
-            setNews(result.articles || []);  // Set articles or an empty array as a fallback
+            setNews(result.results || []);  // Set articles or an empty array as a fallback
             setLoading(false);
         } catch (error) {
             console.error("Failed to fetch news:", error);
@@ -67,7 +67,7 @@ const News = () => {
                                 </div>
                                 <a
                                     className="px-4 py-2 text-sm text-blue-100 bg-red-500 rounded shadow-black font-serif"
-                                    href={item.url}
+                                    href={item.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
