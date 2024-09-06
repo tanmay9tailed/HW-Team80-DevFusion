@@ -31,9 +31,11 @@ const WelcomeAnimation = () => {
 
   useEffect(() => {
     fetchUserData();
+    
   }, []);
 
   useGSAP(() => {
+    const x = window.innerWidth/2
     const t2 = gsap.timeline();
     t2.from(".loading span", {
       duration: 2,
@@ -44,7 +46,7 @@ const WelcomeAnimation = () => {
     }).to(".loading #middle", {
       delay: 0.5,
       duration: 4,
-      x: windowWidth > 600 ? 3900 : 1500,
+      x: windowWidth > 600 ? 3900 : x+1200,
       scale: 300,
     });
   });
