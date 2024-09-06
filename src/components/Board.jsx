@@ -48,7 +48,7 @@ const Board = () => {
     const movePlayer = (current, target, axis, onComplete) => {
       const diff = target - current;
       if (Math.abs(diff) > 1) {
-        const newPosition = current + diff / 6;
+        const newPosition = current + diff / 10;
         player.style[axis] = `${newPosition}px`;
 
         requestAnimationFrame(() => movePlayer(newPosition, target, axis, onComplete));
