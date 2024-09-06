@@ -25,15 +25,20 @@ export const Loader = () => {
 };
 
 const News = () => {
-    const [news, setNews] = useState([{title: "news1", url: "url1"}]);
+    const [news, setNews] = useState([]);  // Initialize as an empty array
     const [loading, setLoading] = useState(true);
 
     const api = async () => {
-        const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=498950393eba4c75b1ae2a427279dae5');
-        const result = await response.json();
-        await setNews(result.articles);
-        console.log(news);
-        setLoading(false);
+        try {
+            const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=498950393eba4c75b1ae2a427279dae5');
+            const result = await response.json();
+            setNews(result.articles || []);  // Set articles or an empty array as a fallback
+            setLoading(false);
+        } catch (error) {
+            console.error("Failed to fetch news:", error);
+            setNews([]);  // Set an empty array if there's an error
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -48,28 +53,32 @@ const News = () => {
             {loading ? (
                 <Loader />
             ) : (
-                news.map((item, index) => (
-                    <div
-                        className="mt-8 ml-16 mr-6 rounded-lg bg-white shadow-md w-400 h-32 overflow-hidden bg-gradient-to-br from-slate-400 via-white to-gray-600"
-                        key={index}
-                    >
-                        <div className="p-4 relative z-10 flex flex-col justify-between h-full items-start">
-                            <div>
-                                <h4 className="text-2xl text-gray-900 font-serif font-medium">
-                                    {item.title}
-                                </h4>
+                Array.isArray(news) && news.length > 0 ? (
+                    news.map((item, index) => (
+                        <div
+                            className="mt-8 ml-16 mr-6 rounded-lg bg-white shadow-md w-400 h-32 overflow-hidden bg-gradient-to-br from-slate-400 via-white to-gray-600"
+                            key={index}
+                        >
+                            <div className="p-4 relative z-10 flex flex-col justify-between h-full items-start">
+                                <div>
+                                    <h4 className="text-2xl text-gray-900 font-serif font-medium">
+                                        {item.title}
+                                    </h4>
+                                </div>
+                                <a
+                                    className="px-4 py-2 text-sm text-blue-100 bg-red-500 rounded shadow-black font-serif"
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Read more
+                                </a>
                             </div>
-                            <a
-                                className="px-4 py-2 text-sm text-blue-100 bg-red-500 rounded shadow-black font-serif"
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Read more
-                            </a>
                         </div>
-                    </div>
-                ))
+                    ))
+                ) : (
+                    <p className="text-white text-center">No news available</p>
+                )
             )}
         </div>
     );
