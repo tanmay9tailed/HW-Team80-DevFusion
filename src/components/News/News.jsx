@@ -29,7 +29,7 @@ const News = () => {
     const [loading, setLoading] = useState(true);
 
     const api = async () => {
-        const response = await fetch('https://newsapi.org/v2/top-headlines?country=in&apiKey=dd623ad68bcc4ea49299a08b3ae2b886');
+        const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=498950393eba4c75b1ae2a427279dae5');
         const result = await response.json();
         setNews(result.articles);
         setLoading(false);
